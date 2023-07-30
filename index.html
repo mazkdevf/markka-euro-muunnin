@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valuuttamuunnin (Markka / Euro)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+        input[type="button"] {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px; 
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Valuuttamuunnin</h1>
+        <label for="amount">Määrä (Markat tai Eurot):</label>
+        <input type="text" id="amount">
+        <div class="result-container">
+            <label for="result">Tulos:</label>
+            <input type="text" id="result" disabled>
+        </div>
+        <br>
+        <input type="button" value="Muunna Markoiksi" onclick="muunnaMarkoiksi()">
+        <input type="button" value="Muunna Euroiksi" onclick="muunnaEuroiksi()">
+    </div>
+
+    <script>
+        function muunnaMarkoiksi() {
+            const euroMaara = parseFloat(document.getElementById("amount").value);
+            const markkaMaara = euroMaara * 5.94573;
+            document.getElementById("result").value = markkaMaara.toFixed(2) + " Markkaa";
+        }
+
+        function muunnaEuroiksi() {
+            const markkaMaara = parseFloat(document.getElementById("amount").value);
+            const euroMaara = markkaMaara / 5.94573;
+            document.getElementById("result").value = euroMaara.toFixed(2) + " Euroa";
+        }
+    </script>
+</body>
+</html>
